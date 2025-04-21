@@ -6,7 +6,6 @@ import {
   Link,
 } from "lucide-react";
 import { ExpandableTabs } from "./ui/expandable-tabs";
-import { useTheme } from "./theme/theme-provider";
 
 export function Navbar() {
   async function ScrolltoView(id: string) {
@@ -15,7 +14,9 @@ export function Navbar() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   }
-
+  async function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
   return (
     <div className="flex flex-col gap-4">
       <ExpandableTabs
@@ -24,7 +25,7 @@ export function Navbar() {
             title: "Profile",
             icon: User,
             expandable: true,
-            onClick: () => ScrolltoView("profile"),
+            onClick: () => scrollToTop(),
           },
           {
             title: "Projects",

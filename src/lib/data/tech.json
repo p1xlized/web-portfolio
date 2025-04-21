@@ -1,0 +1,118 @@
+{
+  "web": [
+    {
+      "name": "React",
+      "icon": "⚛️",
+      "color": {
+        "latte": "#1e66f5",
+        "mocha": "#89b4fa"
+      }
+    },
+    {
+      "name": "Next.js",
+      "icon": "⏭️",
+      "color": {
+        "latte": "#7287fd",
+        "mocha": "#b4befe"
+      }
+    }
+  ],
+  "mobile": [
+    {
+      "name": "React Native",
+      "icon": "📱",
+      "color": {
+        "latte": "#209fb5",
+        "mocha": "#74c7ec"
+      }
+    },
+    {
+      "name": "Flutter",
+      "icon": "💙",
+      "color": {
+        "latte": "#1e66f5",
+        "mocha": "#89b4fa"
+      }
+    }
+  ],
+  "desktop": [
+    {
+      "name": "Tauri",
+      "icon": "🦀",
+      "color": {
+        "latte": "#df8e1d",
+        "mocha": "#f9e2af"
+      }
+    },
+    {
+      "name": "Electron",
+      "icon": "⚡",
+      "color": {
+        "latte": "#8839ef",
+        "mocha": "#cba6f7"
+      }
+    }
+  ],
+  "backend": [
+    {
+      "name": "Node.js",
+      "icon": "🟢",
+      "color": {
+        "latte": "#40a02b",
+        "mocha": "#a6e3a1"
+      }
+    },
+    {
+      "name": "Bun",
+      "icon": "🥐",
+      "color": {
+        "latte": "#fe640b",
+        "mocha": "#fab387"
+      }
+    },
+    {
+      "name": "Elysia",
+      "icon": "🌬️",
+      "color": {
+        "latte": "#209fb5",
+        "mocha": "#74c7ec"
+      }
+    }
+  ],
+  "db": [
+    {
+      "name": "PostgreSQL",
+      "icon": "🐘",
+      "color": {
+        "latte": "#179299",
+        "mocha": "#94e2d5"
+      }
+    },
+    {
+      "name": "MongoDB",
+      "icon": "🍃",
+      "color": {
+        "latte": "#40a02b",
+        "mocha": "#a6e3a1"
+      }
+    }
+  ],
+  "tools": [
+    {
+      "name": "Docker",
+      "icon": "🐳",
+      "color": {
+        "latte": "#209fb5",
+        "mocha": "#74c7ec"
+      }
+    },
+    {
+      "name": "Git",
+      "icon": "🔧",
+      "color": {
+        "latte": "#d20f39",
+        "mocha": "#f38ba8"
+      }
+    }
+  ]
+}

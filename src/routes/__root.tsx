@@ -7,8 +7,10 @@ export const Route = createRootRoute({
   component: () => (
     <>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <div className="flex align-middle justify-center p-2 sticky top-0 z-50">
-          <Navbar />
+        <div className="sticky top-0 z-50">
+          <div className="flex align-middle justify-center p-2 ">
+            <Navbar />
+          </div>
         </div>
         <div className="mt-4">
           <Outlet />

@@ -2,8 +2,6 @@
 
 @plugin "tailwindcss-animate";
 
-@custom-variant dark (&:is(.dark *));
-
 body {
   @apply m-0;
   font-family:
@@ -60,7 +58,7 @@ code {
 .dark {
   --radius: 0.5rem;
 
-  --background: oklch(0.149 0.006 274.8); /* base */
+  --background: oklch(0.0836 0.133 173.7); /* base */
   --foreground: oklch(0.88 0.125 270.2); /* text */
 
   --muted: oklch(0.235 0.015 275.6); /* surface0 */
