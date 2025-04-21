@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal";
 import { LayoutGrid } from "@/components/ui/layout-grid";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import AnimatedGradientBackground from "@/components/ui/animated-gradient-background";
 import { useTheme } from "@/components/theme/theme-provider";
 import { GradientText } from "@/components/ui/gradient-text";
 import Technologies from "../lib/data/tech.json";
@@ -17,18 +16,7 @@ function App() {
     <div>
       <div id="profile" className="relative w-full h-screen overflow-hidden">
         {/* Gradient Background */}
-        <AnimatedGradientBackground
-          gradientColors={[
-            theme === "dark" ? "#000700" : "#FFFFFF",
-            theme === "dark" ? "#94e2d5" : "#F5F5F5",
-            theme === "dark" ? "#89dceb" : "#F5F5F5",
-            theme === "dark" ? "#74c7ec" : "#F5F5F5",
-            theme === "dark" ? "#89b4fa" : "#F5F5F5",
-            theme === "dark" ? "#b4befe" : "#F5F5F5",
-            theme === "dark" ? "#b4befe" : "#F5F5F5",
-          ]}
-          gradientStops={[45, 50, 69, 65, 75, 80, 100]}
-        />
+        <BackgroundCircles variant={currentVariant} />
 
         <div className="relative z-10 flex flex-col items-center justify-start h-full px-4 pt-32 text-center">
           <div className="flex items-center justify-center w-full gap-8">
@@ -108,10 +96,14 @@ function App() {
           </div>
         </div>
       </div>
+      <div id="projects" className="relative w-full h-screen overflow-hidden">
+        {/* Gradient Background */}
 
-      <div id="projects" className="h-screen mt-4 py-10 w-full">
-        <LayoutGrid cards={cards} />
+        <div className="relative z-10 flex flex-col items-center justify-start h-full px-4 pt-32 text-center">
+          <LayoutGrid cards={cards} />
+        </div>
       </div>
+
       <div id="contact" className="h-screen py-10 w-full">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum
