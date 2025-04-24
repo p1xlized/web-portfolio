@@ -8,7 +8,7 @@ export const Route = createRootRoute({
     <>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <div className="sticky top-0 z-50">
-          <div className="flex align-middle justify-center p-2 ">
+          <div className="flex h-0 align-middle justify-center p-2 ">
             <Navbar />
           </div>
         </div>
