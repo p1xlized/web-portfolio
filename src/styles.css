@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 @plugin "tailwindcss-animate";
 
 body {
@@ -49,7 +51,7 @@ code {
   --ring: oklch(0.37 0.02 275); /* text */
 
   --chart-1: oklch(0.48 0.22 20); /* red */
-  --chart-2: oklch(0.35 0.16 190); /* teal */
+  --chart-2: oklch(0.86 0.08 182);
   --chart-3: oklch(0.56 0.2 250); /* blue */
   --chart-4: oklch(0.52 0.19 75); /* yellow */
   --chart-5: oklch(0.4 0.14 145); /* green */
@@ -58,7 +60,7 @@ code {
 .dark {
   --radius: 0.5rem;
 
-  --background: oklch(0.0836 0.133 173.7); /* base */
+  --background: oklch(0.18 0.0204 284.2); /* base */
   --foreground: oklch(0.88 0.125 270.2); /* text */
 
   --muted: oklch(0.235 0.015 275.6); /* surface0 */
@@ -88,9 +90,9 @@ code {
   --ring: oklch(0.88 0.125 270.2); /* text */
 
   --chart-1: oklch(0.68 0.24 25); /* red */
-  --chart-2: oklch(0.74 0.18 170); /* teal */
-  --chart-3: oklch(0.78 0.21 252); /* blue */
-  --chart-4: oklch(0.86 0.24 85); /* yellow */
+  --chart-2: oklch(0.86 0.08 182); /* teal */
+  --chart-3: oklch(0.77 0.1113 259.88); /* blue */
+  --chart-4: oklch(0.87 0.0752 336.3); /* yellow */
   --chart-5: oklch(0.78 0.2 135); /* green */
 }
 
