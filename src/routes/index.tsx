@@ -1,34 +1,25 @@
 import { createFileRoute } from "@tanstack/react-router";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-} from "@/components/ui/carousel";
-import {
-  Calendar,
-  ChevronDown,
-  Clock,
-  Code,
-  FileText,
-  University,
-  User,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { type CarouselApi } from "@/components/ui/carousel";
+import { DownloadIcon, University } from "lucide-react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
+
 import { useNavigate } from "@tanstack/react-router";
-import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
 import StudyCard from "@/components/StudyCard";
+import ButtonColorful from "@/components/ui/button-colorful";
+import TextRewind from "@/components/ui/text-rewind";
+import TechCard from "@/components/TechCard";
+import { GitHub, Reddit, LinkedIn, Discord } from "../components/icons";
+import { techItems, toolsItems } from "@/lib/data/tech";
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+import { projectsData } from "@/lib/data/projects";
+import ProjectCard from "@/components/ProjectCard";
+// rote
 export const Route = createFileRoute("/")({
   component: App,
 });
-
+// component
 function App() {
   const navigate = useNavigate();
   const [api, setApi] = useState<CarouselApi>();
@@ -46,13 +37,13 @@ function App() {
   return (
     <div>
       <div id="profile" className="relative w-full h-screen overflow-hidden">
-        <div className="flex items-center justify-center min-h-screen">
+        <div className="flex items-start justify-center min-h-screen mt-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full p-4">
             {/* Row 1 - Big Left, Small Right */}
             <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="bg-chart-2 rounded-lg p-6 lg:col-span-2 aspect-square lg:aspect-auto shadow-sm hover:shadow-md"
+              className="bg-chart-2 rounded-lg p-6 lg:col-span-2 aspect-square lg:aspect-auto shadow-sm hover:shadow-md flex flex-col"
             >
               <h3 className="text-3xl font-semibold text-black">
                 HI! My name is Alexandru Paduret
@@ -64,6 +55,47 @@ function App() {
                 Development, crafting solutions that are as functional as they
                 are enjoyable to use.
               </p>
+
+              {/* This spacer pushes the buttons to the bottom */}
+              <div className="flex-grow" />
+              <Separator />
+              <div className="flex justify-between flex-wrap gap-2 mt-4">
+                <ButtonColorful
+                  gradient={["#89b4fa", "#74c7ec", "#cba6f7"]}
+                  className="text-black"
+                >
+                  <GitHub />
+                  Github
+                </ButtonColorful>
+                <ButtonColorful
+                  gradient={["#89b4fa", "#74c7ec", "#cba6f7"]}
+                  className="text-black"
+                >
+                  <Reddit />
+                  Reddit
+                </ButtonColorful>
+                <ButtonColorful
+                  gradient={["#89b4fa", "#74c7ec", "#cba6f7"]}
+                  className="text-black"
+                >
+                  <Discord />
+                  Discord
+                </ButtonColorful>
+                <ButtonColorful
+                  gradient={["#89b4fa", "#74c7ec", "#cba6f7"]}
+                  className="text-black"
+                >
+                  <LinkedIn />
+                  LinkedIn
+                </ButtonColorful>
+                <ButtonColorful
+                  gradient={["#89b4fa", "#74c7ec", "#cba6f7"]}
+                  className="text-black"
+                >
+                  <DownloadIcon />
+                  Download my Resume
+                </ButtonColorful>
+              </div>
             </motion.div>
 
             <motion.div
@@ -88,15 +120,21 @@ function App() {
               {/* Blurred overlay with transition on hover */}
               <div className="absolute inset-0 rounded-lg transition-all duration-300" />
 
-              <div className="absolute inset-0 flex items-center justify-center z-10">
-                <Button
+              <div
+                className="absolute inset-0 flex items-center justify-center z-10"
+                onClick={() => {
+                  navigate({ to: "/music" });
+                }}
+              >
+                <TextRewind text="My Hobbies" />
+                {/* <Button
                   variant="secondary"
                   onClick={() => {
                     navigate({ to: "/music" });
                   }}
                 >
                   Explore my Music
-                </Button>
+                </Button> */}
               </div>
             </motion.div>
 
@@ -115,135 +153,69 @@ function App() {
             </motion.div>
           </div>
         </div>
+        {/* <span className="text-white absolute bottom-26 left-1/2 transform -translate-x-1/2">
+          <TextRewind text="Check me out" />
+        </span> */}
       </div>
-      <div id="tech_stack" className="h-screen py-10 w-full">
-        <div className="flex justify-center">
-          <RadialOrbitalTimeline timelineData={timelineData} />
+      <div
+        id="tech_stack"
+        className="relative w-full h-screen overflow-hidden flex flex-col"
+      >
+        <div className="flex flex-col items-center justify-center flex-grow space-y-6">
+          {/* Subtitle */}
+          <h3 className="text-white text-lg">My Tech Stack</h3>
+
+          {/* Tech Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-7 gap-4 w-auto p-4">
+            {techItems.map((tech, index) => (
+              <TechCard
+                key={index}
+                name={tech.name}
+                gradient={tech.gradient}
+                pointer={tech.Icon}
+              />
+            ))}
+          </div>
+          <div className="flex flex-col items-center justify-center space-y-6 bg-muted p-4 rounded-xl">
+            <div>
+              <p className="font-semibold text-2xl">Tools that I use</p>
+            </div>
+
+            <div className="flex items-center space-x-4 text-sm text-white justify-center">
+              {toolsItems.map((tool, index) => (
+                <>
+                  <Badge key={index} className="text-base px-3 py-1.5">
+                    {tool.Icon && <tool.Icon className="w-10 h-10 mr-1" />}
+                    {tool.name}
+                  </Badge>
+                </>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
+
       <div id="projects" className="relative w-full h-screen overflow-hidden">
         <div className="flex items-center justify-center min-h-screen">
-          <Carousel
-            setApi={setApi}
-            className="w-full max-w-xs"
-            opts={{ loop: true }}
-          >
-            <CarouselContent className="py-3">
-              {Array.from({ length: 5 }).map((_, index) => (
-                <CarouselItem key={index} className="">
-                  <Card
-                    className={cn("transition-transform duration-500", {
-                      "scale-[0.6]": index !== current - 1,
-                    })}
-                  >
-                    <CardContent className="relative aspect-square p-4 overflow-hidden">
-                      {/* Background image */}
-                      <div
-                        className="absolute inset-0 bg-cover bg-center w-128 h-72"
-                        style={{
-                          backgroundImage: `url(https://images.unsplash.com/photo-1504600770771-fb03a6961d33?q=80&w=1764&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)`,
-                        }}
-                      />
+          <div className="flex flex-col items-center justify-center flex-grow space-y-6">
+            {/* Subtitle */}
+            <h3 className="text-white text-lg">My Tech Stack</h3>
 
-                      {/* Overlay + Text */}
-                      <div className="relative z-10 flex h-full w-full items-center justify-center bg-black/40">
-                        <span className="text-4xl font-semibold text-white">
-                          {index + 1}
-                        </span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
+            {/* Tech Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-7 gap-4 w-auto p-4">
+              {projectsData.map((project, index) => (
+                <ProjectCard
+                  key={index}
+                  title={project.name}
+                  description={project.description}
+                  imageSrc={project.image}
+                  type={project.type as "Web" | "Mobile" | "Game" | "API"}
+                />
               ))}
-            </CarouselContent>
-
-            {/* Custom arrows container at bottom center */}
-            <div className="mt-2 flex justify-center space-x-4">
-              <CarouselPrevious className="static translate-y-0" />
-              <CarouselNext className="static translate-y-0" />
             </div>
-          </Carousel>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-const slideData = [
-  {
-    title: "Mystic Mountains",
-    button: "Explore Component",
-    src: "https://images.unsplash.com/photo-1494806812796-244fe51b774d?q=80&w=3534&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Urban Dreams",
-    button: "Explore Component",
-    src: "https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Neon Nights",
-    button: "Explore Component",
-    src: "https://images.unsplash.com/photo-1590041794748-2d8eb73a571c?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Desert Whispers",
-    button: "Explore Component",
-    src: "https://images.unsplash.com/photo-1679420437432-80cfbf88986c?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-];
-const timelineData = [
-  {
-    id: 1,
-    title: "Planning",
-    date: "Jan 2024",
-    content: "Project planning and requirements gathering phase.",
-    category: "Planning",
-    icon: Calendar,
-    relatedIds: [2],
-    status: "completed" as const,
-    energy: 100,
-  },
-  {
-    id: 2,
-    title: "Design",
-    date: "Feb 2024",
-    content: "UI/UX design and system architecture.",
-    category: "Design",
-    icon: FileText,
-    relatedIds: [1, 3],
-    status: "completed" as const,
-    energy: 90,
-  },
-  {
-    id: 3,
-    title: "Development",
-    date: "Mar 2024",
-    content: "Core features implementation and testing.",
-    category: "Development",
-    icon: Code,
-    relatedIds: [2, 4],
-    status: "in-progress" as const,
-    energy: 60,
-  },
-  {
-    id: 4,
-    title: "Testing",
-    date: "Apr 2024",
-    content: "User testing and bug fixes.",
-    category: "Testing",
-    icon: User,
-    relatedIds: [3, 5],
-    status: "pending" as const,
-    energy: 30,
-  },
-  {
-    id: 5,
-    title: "Release",
-    date: "May 2024",
-    content: "Final deployment and release.",
-    category: "Release",
-    icon: Clock,
-    relatedIds: [4],
-    status: "pending" as const,
-    energy: 10,
-  },
-];

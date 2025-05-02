@@ -12,9 +12,10 @@ import WebPortfolio from "/images/blueprints.png";
 interface Project {
   name: string;
   description: string;
-  image: string; // changed from image_url
+  image: string;
   stack: string[];
   gh_link: string;
+  type: "Web" | "Mobile" | "Game" | "API" | "IoT";
 }
 
 export const projectsData: Project[] = [
@@ -25,6 +26,7 @@ export const projectsData: Project[] = [
     image: Beerbolter,
     stack: ["React", "TanStack Router", "Tailwind CSS", "Supabase"],
     gh_link: "https://github.com/p1xlized/40k-homebrewer",
+    type: "Web",
   },
   {
     name: "Kira",
@@ -33,6 +35,7 @@ export const projectsData: Project[] = [
     image: Kira,
     stack: ["Godot"],
     gh_link: "https://github.com/KittyVerse/kira-from-light-to-darkness",
+    type: "Game",
   },
   {
     name: "GymBud",
@@ -41,6 +44,7 @@ export const projectsData: Project[] = [
     image: GymBud,
     stack: ["Flutter", "Supabase", "Elysia", "OpenAI"],
     gh_link: "https://github.com/orgs/Hackathon2024v2/repositories",
+    type: "Mobile",
   },
   {
     name: "Biblio API",
@@ -49,6 +53,7 @@ export const projectsData: Project[] = [
     image: Biblio,
     stack: ["Bun.js", "Elysia", "PostgreSQL"],
     gh_link: "https://github.com/p1xlized/biblio-api",
+    type: "API",
   },
   {
     name: "CityLife",
@@ -57,6 +62,7 @@ export const projectsData: Project[] = [
     image: City,
     stack: ["React Native", "Expo", "Supabase", "Ui Kitten"],
     gh_link: "https://github.com/p1xlized/Hackathon2024App",
+    type: "Mobile",
   },
   {
     name: "SmartPiano",
@@ -65,6 +71,7 @@ export const projectsData: Project[] = [
     image: SmartPiano,
     stack: ["Arduino", "IoT", "OpenAI", "MediaPipe"],
     gh_link: "https://gitlab.com/AndyyTo/piano-iot",
+    type: "IoT",
   },
   {
     name: "Blueprints.js",
@@ -73,6 +80,7 @@ export const projectsData: Project[] = [
     image: Blueprints,
     stack: ["JavaScript", "Vite"],
     gh_link: "https://github.com/p1xlized/blueprint-js",
+    type: "Web",
   },
   {
     name: "Web Portfolio",
@@ -81,5 +89,6 @@ export const projectsData: Project[] = [
     image: WebPortfolio,
     stack: ["React", "TypeScript", "Tailwind CSS", "Shadcn/ui"],
     gh_link: "https://github.com/yourusername/ecommerce-backend",
+    type: "Web",
   },
 ];
