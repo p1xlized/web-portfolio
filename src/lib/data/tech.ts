@@ -32,6 +32,7 @@ interface TechItem {
 interface ToolsItem {
   name: string;
   Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  text: string;
 }
 
 export const techItems: TechItem[] = [
@@ -110,25 +111,31 @@ export const toolsItems: ToolsItem[] = [
   {
     name: "Ghostty",
     Icon: Ghostty,
+    text: "Minimal, fast terminal emulator.",
   },
   {
     name: "Zed",
     Icon: Zed,
+    text: "Modern, collaborative code editor.",
   },
   {
     name: "ZenBrowser",
     Icon: ZenBrowser,
+    text: "Privacy-focused, distraction-free browser.",
   },
   {
     name: "Bruno",
     Icon: Bruno,
+    text: "API testing made simple.",
   },
   {
     name: "Obsidian",
     Icon: Obsidian,
+    text: "Markdown knowledge base with graph view.",
   },
   {
     name: "Suse",
     Icon: Suse,
+    text: "Reliable enterprise Linux distro.",
   },
 ];

@@ -42,11 +42,11 @@ export function TextRewind({
     <div className="w-full text-center">
       <motion.div
         className={cn(
-          "w-full text-center cursor-pointer text-3xl font-bold",
+          "w-full text-center cursor-pointer text-xl font-bold",
           "transition-all duration-200 ease-in-out tracking-widest",
           "text-black dark:text-white italic",
           "stroke-[#d6f4f4]",
-          className,
+          className
         )}
         style={textShadowStyle}
         whileHover={noShadowStyle}

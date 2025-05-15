@@ -15,25 +15,48 @@ import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { projectsData } from "@/lib/data/projects";
 import ProjectCard from "@/components/ProjectCard";
+import { Tab, TabList, TabPanel, Tabs } from "@/components/ui/tabs";
+import {
+  BrandScroller,
+  BrandScrollerReverse,
+} from "@/components/ui/brand-scoller";
+import {
+  CodeBlock,
+  CodeBlockCode,
+  CodeBlockGroup,
+} from "@/components/ui/code-block";
+import { TextScramble } from "@/components/ui/text-scramble";
+import GitHubStats from "@/components/GitHubStats";
+import { TextParticle } from "@/components/ui/text-particle";
 // rote
 export const Route = createFileRoute("/")({
   component: App,
 });
 // component
+
 function App() {
   const navigate = useNavigate();
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
-  console.log("current :", current);
-  useEffect(() => {
-    if (!api) {
-      return;
-    }
-    setCurrent(api.selectedScrollSnap() + 1);
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
-  }, [api]);
+
+  const [isTrigger, setIsTrigger] = useState(false);
+  const transitionProps = {
+    initial: { opacity: 0, y: 10 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: 10 },
+    transition: { duration: 0.3, ease: "easeOut" },
+  };
+
+  const codeLanguages = `function returnSkills() {
+  const result = async fetch("/mySkills")
+  return {
+  "languages": ["TypeScript","Rust", "Dart","JavaSctipt","GDScript","Python"],
+  "frameworks": ["ReactJS", "SolidJS","Flutter","ElysiaJS","Tauri","Tokio","Express"],
+  "ORM": ["Drizzle","TypeORM", "Prisma", "Diesel"],
+  "Databases": ["PostgresSQL", "MongoDB"],
+  "GameEngines": ["Godot","Bevy"]
+  "tools":  ["docker","nix", "linux", "blender"]
+  }
+}`;
+
   return (
     <div>
       <div id="profile" className="relative w-full h-screen overflow-hidden">
@@ -111,45 +134,128 @@ function App() {
             </motion.div>
 
             {/* Row 2 - Small Left, Big Right */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="relative rounded-lg p-6 aspect-square shadow-sm hover:shadow-md bg-cover bg-center group"
-              style={{ backgroundImage: "url('/images/music-background.jpg')" }}
-            >
-              {/* Blurred overlay with transition on hover */}
-              <div className="absolute inset-0 rounded-lg transition-all duration-300" />
-
-              <div
-                className="absolute inset-0 flex items-center justify-center z-10"
-                onClick={() => {
-                  navigate({ to: "/music" });
+            <div className="grid grid-cols-2 grid-rows-2 gap-2 aspect-square">
+              {/* Top Left */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="relative rounded-lg p-6 shadow-sm hover:shadow-md bg-cover bg-center group"
+                style={{
+                  backgroundImage: "url('/images/mechanicus.jpg')",
                 }}
               >
-                <TextRewind text="My Hobbies" />
-                {/* <Button
-                  variant="secondary"
+                {/* Blur overlay — fades out on hover */}
+                <div className="absolute inset-0 rounded-lg backdrop-blur-sm bg-black/10 transition-all duration-300 hover:backdrop-blur-0 hover:bg-transparent" />
+
+                {/* Text content */}
+                <div className="absolute inset-0 flex items-center justify-center z-10">
+                  <TextScramble
+                    className="text-2xl font-semibold"
+                    as="span"
+                    speed={0.01}
+                    trigger={isTrigger}
+                    onHoverStart={() => setIsTrigger(true)}
+                    onScrambleComplete={() => setIsTrigger(false)}
+                  >
+                    Forge World
+                  </TextScramble>
+                </div>
+              </motion.div>
+
+              {/* Top Right */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="relative rounded-lg p-6 shadow-sm hover:shadow-md bg-cover bg-center group"
+                style={{
+                  backgroundImage: "url('/images/music-background.jpg')",
+                }}
+              >
+                <div className="absolute inset-0 rounded-lg transition-all duration-300" />
+                <div
+                  className="absolute inset-0 flex items-center justify-center z-10"
                   onClick={() => {
                     navigate({ to: "/music" });
                   }}
                 >
-                  Explore my Music
-                </Button> */}
-              </div>
-            </motion.div>
+                  <TextRewind text="My Hobbies" />
+                </div>
+              </motion.div>
+
+              {/* Bottom full-width */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="relative rounded-lg p-0 shadow-sm hover:shadow-md bg-cover bg-center group col-span-2"
+              >
+          <div className="h-full w-full border border-gray-200 rounded-lg overflow-hidden">
+            <TextParticle
+              text="@svdxx"
+              fontSize={60}
+              particleColor="#f5e0dc"
+              particleSize={1}
+              particleDensity={2}
+              backgroundColor="#b4befe"
+            />
+          </div>
+              </motion.div>
+            </div>
 
             <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="bg-muted  rounded-lg p-6 lg:col-span-2 aspect-square lg:aspect-auto shadow-sm hover:shadow-md"
             >
-              <h3 className="text-xl font-semibold flex items-center">
-                <University className="mr-2" /> Education
-              </h3>
+              <Tabs>
+                <TabList aria-label="History of Ancient Rome">
+                  <Tab id="FoR">Languages & frameworks</Tab>
+                  <Tab id="MaR">Developer Tools</Tab>
+                  <Tab id="Emp">Other Skills</Tab>
+                </TabList>
 
-              <p className="text-black mt-4">
-                <StudyCard />
-              </p>
+                <TabPanel id="FoR">
+                  <motion.div {...transitionProps}>
+                    <CodeBlock>
+                      <CodeBlockCode
+                        code={codeLanguages}
+                        language="javascript"
+                        theme="github-dark"
+                      />
+                    </CodeBlock>
+                  </motion.div>
+                </TabPanel>
+
+                <TabPanel id="MaR">
+                  <motion.div {...transitionProps}>
+                    <div className="space-y-4 text-white text-sm">
+                      {toolsItems.map((tool, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center space-x-4"
+                        >
+                          <Badge className="text-base px-3 py-1.5 flex items-center space-x-2">
+                            {tool.Icon && <tool.Icon className="w-6 h-6" />}
+                            <span>{tool.name}</span>
+                          </Badge>
+                          <span className="text-white/80">test</span>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </TabPanel>
+
+                <TabPanel id="Emp">
+                  <motion.div {...transitionProps}>
+                    <CodeBlock>
+                      <CodeBlockCode
+                        code={codeLanguages}
+                        language="javascript"
+                        theme="github-dark"
+                      />
+                    </CodeBlock>
+                  </motion.div>
+                </TabPanel>
+              </Tabs>
             </motion.div>
           </div>
         </div>
@@ -202,7 +308,7 @@ function App() {
             <h3 className="text-white text-lg">My Tech Stack</h3>
 
             {/* Tech Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-7 gap-4 w-auto p-4">
+            <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-4 gap-4 w-auto p-4">
               {projectsData.map((project, index) => (
                 <ProjectCard
                   key={index}

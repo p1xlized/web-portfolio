@@ -26,7 +26,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   return (
     <div
-      className="relative my-4 aspect-square h-[300px] overflow-hidden rounded-[4px]"
+      className="relative my-4 aspect-square h-[300px] overflow-hidden rounded-2xl"
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
