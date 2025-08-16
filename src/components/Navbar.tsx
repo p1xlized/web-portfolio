@@ -1,12 +1,4 @@
-import {
-  User,
-  Presentation,
-  SquareUserRound,
-  BookHeart,
-  Link,
-  Brain,
-  ChevronLeft,
-} from "lucide-react";
+import { User, Presentation, ChevronLeft, ContactRound } from "lucide-react";
 import { ExpandableTabs } from "./ui/expandable-tabs";
 import { useLocation, useNavigate } from "@tanstack/react-router";
 
@@ -36,20 +28,17 @@ export function Navbar() {
       onClick: () => scrollToTop(),
     },
     {
-      title: "Skills",
-      icon: Brain,
-      expandable: true,
-      onClick: () => ScrolltoView("tech_stack"),
-    },
-    {
       title: "Projects",
       icon: Presentation,
       expandable: true,
       onClick: () => ScrolltoView("projects"),
     },
-    { type: "separator" as const },
-    { title: "links", icon: Link, expandable: true },
-    { title: "Blog", icon: BookHeart, expandable: false },
+    {
+      title: "Contact",
+      icon: ContactRound,
+      expandable: true,
+      onClick: () => ScrolltoView("contact"),
+    },
     { type: "separator" as const },
   ];
 

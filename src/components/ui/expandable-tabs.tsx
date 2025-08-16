@@ -50,8 +50,6 @@ const spanVariants = {
   exit: { width: 0, opacity: 0 },
 };
 
-const transition = { delay: 0.1, type: "spring", bounce: 0, duration: 0.6 };
-
 export function ExpandableTabs({
   tabs,
   className,
@@ -100,7 +98,12 @@ export function ExpandableTabs({
             animate="animate"
             custom={selected === index}
             onClick={() => handleSelect(index)}
-            transition={transition}
+            transition={{
+              delay: 0.1,
+              type: "spring",
+              bounce: 0,
+              duration: 0.6,
+            }}
             className={cn(
               "relative flex items-center rounded-xl px-4 py-2 text-sm font-medium transition-colors duration-300",
               selected === index
@@ -116,7 +119,12 @@ export function ExpandableTabs({
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  transition={transition}
+                  transition={{
+                    delay: 0.1,
+                    type: "spring",
+                    bounce: 0,
+                    duration: 0.6,
+                  }}
                   className="overflow-hidden"
                 >
                   {tab.title}

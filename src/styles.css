@@ -19,81 +19,80 @@ code {
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.65rem;
 
-  --background: oklch(0.95 0.03 255); /* base */
-  --foreground: oklch(0.37 0.02 275); /* text */
+  --background: oklch(0.906 0.0117 264.51); /* base */
+  --foreground: oklch(0.4355 0.043 279.33); /* text */
 
   --muted: oklch(0.83 0.02 245); /* surface0 */
-  --muted-foreground: oklch(0.42 0.015 275); /* subtext1 */
+  --muted-foreground: oklch(0.8083 0.0174 271.2); /* subtext1 */
 
   --popover: oklch(0.95 0.03 255); /* base */
-  --popover-foreground: oklch(0.37 0.02 275); /* text */
+  --popover-foreground: oklch(0.4355 0.043 279.33); /* text */
 
   --card: oklch(0.95 0.03 255); /* base */
-  --card-foreground: oklch(0.37 0.02 275); /* text */
+  --card-foreground: oklch(0.4355 0.043 279.33); /* text */
 
-  --border: oklch(0.77 0.01 250); /* surface1 */
-  --input: oklch(0.77 0.01 250); /* surface1 */
+  --border: oklch(0.8083 0.0174 271.2); /* surface1 */
+  --input: oklch(0.8083 0.0174 271.2); /* surface1 */
 
   --primary: oklch(0.72 0.14 290); /* Lavender */
   --primary-foreground: oklch(0.95 0.03 255); /* base */
 
-  --secondary: oklch(0.83 0.02 245); /* surface0 */
-  --secondary-foreground: oklch(0.37 0.02 275); /* text */
+  --secondary: oklch(0.8575 0.0145 268.48); /* surface0 */
+  --secondary-foreground: oklch(0.4355 0.043 279.33); /* text */
 
-  --accent: oklch(0.83 0.02 245); /* surface0 */
-  --accent-foreground: oklch(0.37 0.02 275); /* text */
+  --accent: oklch(0.8575 0.0145 268.48); /* surface0 */
+  --accent-foreground: oklch(0.4355 0.043 279.33); /* text */
 
-  --destructive: oklch(0.48 0.22 20); /* red */
+  --destructive: oklch(0.6252 0.1967 20.27); /* red */
   --destructive-foreground: oklch(0.92 0.025 255); /* mantle */
 
-  --ring: oklch(0.37 0.02 275); /* text */
+  --ring: oklch(0.4355 0.043 279.33); /* text */
 
-  --chart-1: oklch(0.48 0.22 20); /* red */
-  --chart-2: oklch(0.86 0.08 182);
-  --chart-3: oklch(0.56 0.2 250); /* blue */
-  --chart-4: oklch(0.52 0.19 75); /* yellow */
-  --chart-5: oklch(0.4 0.14 145); /* green */
+  --chart-1: oklch(0.7256 0.1739 338.43); /* red */
+  --chart-2: oklch(0.6477 0.1068 212.89);
+  --chart-3: oklch(0.682 0.1448 235.38); /* blue */
+  --chart-4: oklch(0.7141 0.1045 33.1); /* yellow */
+  --chart-5: oklch(0.625 0.1772 140.44); /* green */
 }
 
 .dark {
-  --radius: 0.5rem;
+  --radius: 0.65rem;
 
-  --background: oklch(0.18 0.0204 284.2); /* base */
+  --background: oklch(0.1828 0.0204 284.2); /* base */
   --foreground: oklch(0.88 0.125 270.2); /* text */
 
-  --muted: oklch(0.235 0.015 275.6); /* surface0 */
+  --muted: oklch(0.324 0.0319 281.98); /* surface0 */
   --muted-foreground: oklch(0.75 0.04 260.1); /* subtext1 */
 
-  --popover: oklch(0.149 0.006 274.8); /* base */
+  --popover: oklch(0.1828 0.0204 284.2); /* base */
   --popover-foreground: oklch(0.88 0.125 270.2); /* text */
 
-  --card: oklch(0.149 0.006 274.8); /* base */
+  --card: oklch(0.1828 0.0204 284.2); /* base */
   --card-foreground: oklch(0.88 0.125 270.2); /* text */
 
-  --border: oklch(0.31 0.01 275); /* surface1 */
-  --input: oklch(0.31 0.01 275); /* surface1 */
-
+  --border: oklch(0.4037 0.032 280.15); /* surface1 */
+  --input: oklch(0.4037 0.032 280.15); /* surface1 */
   --primary: oklch(0.85 0.16 291.2); /* Lavender */
-  --primary-foreground: oklch(0.149 0.006 274.8); /* base */
+  --primary-foreground: oklch(0.1828 0.0204 284.2); /* base */
 
-  --secondary: oklch(0.235 0.015 275.6); /* surface0 */
-  --secondary-foreground: oklch(0.88 0.125 270.2); /* text */
+  --secondary: oklch(0.324 0.0319 281.98); /* surface0 */
+  --secondary-foreground: oklch(0.8787 0.0426 272.28); /* text */
 
-  --accent: oklch(0.235 0.015 275.6); /* surface0 */
-  --accent-foreground: oklch(0.88 0.125 270.2); /* text */
+  --accent: oklch(0.324 0.0319 281.98); /* surface0 */
+  --accent-foreground: oklch(0.8787 0.0426 272.28); /* text */
 
-  --destructive: oklch(0.68 0.24 25); /* red */
+  --destructive: oklch(0.7556 0.1297 2.76); /* red */
   --destructive-foreground: oklch(0.12 0.01 274.9); /* mantle */
 
-  --ring: oklch(0.88 0.125 270.2); /* text */
+  --ring: oklch(0.8787 0.0426 272.28); /* text */
 
-  --chart-1: oklch(0.68 0.24 25); /* red */
+  --chart-1: oklch(0.87 0.0752 336.3);
   --chart-2: oklch(0.86 0.08 182); /* teal */
   --chart-3: oklch(0.77 0.1113 259.88); /* blue */
-  --chart-4: oklch(0.87 0.0752 336.3); /* yellow */
-  --chart-5: oklch(0.78 0.2 135); /* green */
+  --chart-4: oklch(0.7821 0.0903 8.85); /* red */
+  --chart-5: oklch(0.8577 0.1092 142.72); /* green */
 }
 
 @theme inline {
@@ -133,53 +132,46 @@ code {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --animate-highlight:
-    highlight 0.6s ease forwards;
-  --animate-flash:
-    flash 0.6s ease forwards;
+  --animate-highlight: highlight 0.6s ease forwards;
+  --animate-flash: flash 0.6s ease forwards;
 
   @keyframes highlight {
     0% {
-      backgroundColor: transparent;
+      backgroundcolor: transparent;
     }
     100% {
-      backgroundColor: var(--highlight);
+      backgroundcolor: var(--highlight);
     }
   }
 
   @keyframes flash {
     0% {
-      backgroundColor: hsl(var(--card));
+      backgroundcolor: hsl(var(--card));
     }
     50% {
-      backgroundColor: var(--highlight);
+      backgroundcolor: var(--highlight);
     }
     100% {
-      backgroundColor: hsl(var(--card));
+      backgroundcolor: hsl(var(--card));
     }
   }
   @keyframes highlight {
-  0% {
-    backgroundColor:
-    transparent;
+    0% {
+      backgroundcolor: transparent;
     }
-  100% {
-    backgroundColor:
-    var(--highlight);
+    100% {
+      backgroundcolor: var(--highlight);
     }
   }
   @keyframes flash {
-  0% {
-    backgroundColor:
-    hsl(var(--card));
+    0% {
+      backgroundcolor: hsl(var(--card));
     }
-  50% {
-    backgroundColor:
-    var(--highlight);
+    50% {
+      backgroundcolor: var(--highlight);
     }
-  100% {
-    backgroundColor:
-    hsl(var(--card));
+    100% {
+      backgroundcolor: hsl(var(--card));
     }
   }
 }
