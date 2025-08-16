@@ -2,10 +2,12 @@
 
 import { motion } from "framer-motion";
 import clsx from "clsx";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Contact } from "lucide-react";
 import ContactForm from "../ContactMe";
 import ContactSection from "./contact-form";
+import type { ToasterRef } from "./toast";
+import Toaster from "./toast";
 
 interface BackgroundCirclesProps {
   title?: string;
@@ -67,6 +69,7 @@ export function BackgroundCircles({
   className,
   variant = "quaternary",
 }: BackgroundCirclesProps) {
+  const toasterRef = useRef<ToasterRef>(null);
   const variantStyles = COLOR_VARIANTS[variant];
 
   const variants = Object.keys(
@@ -122,7 +125,12 @@ export function BackgroundCircles({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <ContactForm />
+        <ContactForm toasterRef={toasterRef} />
+
+        {/* Toaster at the bottom */}
+        <div className="fixed bottom-4 left-0 right-0 flex justify-center z-50">
+          <Toaster ref={toasterRef} />
+        </div>
       </motion.div>
 
       <div className="absolute inset-0 [mask-image:radial-gradient(90%_60%_at_50%_50%,#000_40%,transparent)]">

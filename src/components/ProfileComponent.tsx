@@ -24,8 +24,58 @@ import {
   Linux,
 } from "./icons";
 import EducationCard from "./EducationCard";
+import TextRewind from "./ui/text-rewind";
+import { useNavigate } from "@tanstack/react-router";
+import {
+  TextStaggerHover,
+  TextStaggerHoverActive,
+  TextStaggerHoverHidden,
+} from "./ui/text-stagger-hover";
 
 export default function ProfileComponent() {
+  const navigate = useNavigate();
+  const socials = [
+    {
+      icon: <GitHub />,
+      label: "Github",
+      href: "https://github.com/yourusername",
+    },
+    {
+      icon: <Reddit />,
+      label: "Reddit",
+      href: "https://reddit.com/u/yourusername",
+    },
+    {
+      icon: <Discord />,
+      label: "Discord",
+      href: "https://discord.gg/yourinvite",
+    },
+    {
+      icon: <LinkedIn />,
+      label: "LinkedIn",
+      href: "https://linkedin.com/in/yourusername",
+    },
+    {
+      icon: <DownloadIcon />,
+      label: "Download my Resume",
+      href: "/resume.pdf", // link to your resume file
+      download: true,
+    },
+  ];
+  const skills = [
+    { icon: React, label: "React" },
+    { icon: Solidjs, label: "SolidJS" },
+    { icon: ElysiaJS, label: "ElysiaJS" },
+    { icon: Flutter, label: "Flutter" },
+    { icon: DrizzleORM, label: "Drizzle" },
+    { icon: NestJS, label: "NestJS" },
+    { icon: GodotEngine, label: "Godot" },
+    { icon: TypeScript, label: "TypeScript" },
+    { icon: Python, label: "Python" },
+    { icon: Rust, label: "Rust" },
+    { icon: PostgreSQL, label: "Postgres" },
+    { icon: Linux, label: "Linux" },
+  ];
   return (
     <>
       <div className="flex items-start justify-center min-h-screen mt-8">
@@ -36,54 +86,93 @@ export default function ProfileComponent() {
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             className="bg-chart-2 rounded-lg p-6 lg:col-span-2 shadow-sm hover:shadow-md flex flex-col"
           >
-            <h3 className="text-3xl font-semibold text-black">
-              HI! My name is Alexandru Paduret
-            </h3>
-            <p className="text-black font-lg mt-2">
-              I'm a Full Stack Developer driven by a passion for building
-              seamless, intuitive user experiences. Curious by nature and always
-              learning, I work across Web, Desktop, Mobile and Game Development,
-              crafting solutions that are as functional as they are enjoyable to
-              use.
-            </p>
+            {/* Name with animation */}
+            <TextStaggerHover
+              as="h3"
+              className="text-5xl font-bold uppercase text-primary-foreground"
+            >
+              <TextStaggerHoverActive
+                animation={"top"}
+                className="opacity-80"
+                staggerDirection="middle"
+              >
+                Alexandru Paduret
+              </TextStaggerHoverActive>
+              <TextStaggerHoverHidden
+                className="origin-bottom"
+                animation="bottom"
+                staggerDirection="middle"
+              >
+                Alexandru Paduret
+              </TextStaggerHoverHidden>
+            </TextStaggerHover>
+
+            {/* Subtitle */}
+            <div className="flex items-center gap-2 mt-2 text-lg text-black">
+              <TextStaggerHover
+                as="h2"
+                className="text-2xl font-bold uppercase text-primary-foreground"
+              >
+                <TextStaggerHoverActive
+                  animation={"top"}
+                  className="opacity-80"
+                  staggerDirection="middle"
+                >
+                  Full Stack Developer
+                </TextStaggerHoverActive>
+                <TextStaggerHoverHidden
+                  className="origin-bottom"
+                  animation="bottom"
+                  staggerDirection="middle"
+                >
+                  Full Stack Developer
+                </TextStaggerHoverHidden>
+              </TextStaggerHover>
+            </div>
+
+            {/* Quote */}
+
+            <div className="flex justify-start gap-4 mt-4 text-3xl">
+              <span role="img" aria-label="Canadian Flag">
+                🇨🇦
+              </span>
+              <span role="img" aria-label="Finnish Flag">
+                🇫🇮
+              </span>
+            </div>
+
             <div className="flex-grow" />
-            <Separator />
+
+            {/* Flags */}
+
+            {/* Social Buttons */}
             <div className="flex justify-between flex-wrap gap-2 mt-4">
-              <ButtonColorful
-                gradient={["#89b4fa", "#74c7ec", "#cba6f7"]}
-                className="text-black"
-              >
-                <GitHub />
-                Github
-              </ButtonColorful>
-              <ButtonColorful
-                gradient={["#89b4fa", "#74c7ec", "#cba6f7"]}
-                className="text-black"
-              >
-                <Reddit />
-                Reddit
-              </ButtonColorful>
-              <ButtonColorful
-                gradient={["#89b4fa", "#74c7ec", "#cba6f7"]}
-                className="text-black"
-              >
-                <Discord />
-                Discord
-              </ButtonColorful>
-              <ButtonColorful
-                gradient={["#89b4fa", "#74c7ec", "#cba6f7"]}
-                className="text-black"
-              >
-                <LinkedIn />
-                LinkedIn
-              </ButtonColorful>
-              <ButtonColorful
-                gradient={["#89b4fa", "#74c7ec", "#cba6f7"]}
-                className="text-black"
-              >
-                <DownloadIcon />
-                Download my Resume
-              </ButtonColorful>
+              {socials.map((item, i) => (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download={item.download || undefined}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: i * 0.1,
+                    type: "spring",
+                    stiffness: 200,
+                  }}
+                  whileHover={{ scale: 1.08, rotate: -4 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <ButtonColorful
+                    gradient={["#89b4fa", "#74c7ec", "#cba6f7"]}
+                    className="text-black"
+                  >
+                    {item.icon}
+                    {item.label}
+                  </ButtonColorful>
+                </motion.a>
+              ))}
             </div>
           </motion.div>
 
@@ -106,118 +195,53 @@ export default function ProfileComponent() {
           <motion.div
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="rounded-lg lg:col-span-1 bg-chart-3/80 shadow-sm hover:shadow-m flex flex-col gap-6"
+            className="rounded-lg bg-chart-3/50 shadow-sm flex flex-col gap-6 p-4"
           >
-            <div className="grid grid-cols-3 gap-2 p-2">
-              <Badge
-                variant="muted"
-                className="flex justify-start items-center gap-2 w-full my-2"
-              >
-                <div className="ml-1 flex items-center gap-2">
-                  <React />
-                  <span className="font-bold text-lg">React</span>
-                </div>
-              </Badge>
-              <Badge
-                variant="muted"
-                className="flex justify-start items-center gap-2 w-full my-2"
-              >
-                <div className="ml-1 flex items-center gap-2">
-                  <Solidjs />
-                  <span className="font-bold text-base">SolidJS</span>
-                </div>
-              </Badge>
-              <Badge
-                variant="muted"
-                className="flex justify-start items-center gap-2 w-full my-2"
-              >
-                <div className="ml-1 flex items-center gap-2">
-                  <ElysiaJS />
-                  <span className="font-bold text-base">ElysiaJS</span>
-                </div>
-              </Badge>
-              <Badge
-                variant="muted"
-                className="flex justify-start items-center gap-2 w-full my-2"
-              >
-                <div className="ml-1 flex items-center gap-2">
-                  <Flutter />
-                  <span className="font-bold text-lg">Flutter</span>
-                </div>
-              </Badge>
-              <Badge
-                variant="muted"
-                className="flex justify-start items-center gap-2 w-full my-2"
-              >
-                <div className="ml-1 flex items-center gap-2">
-                  <DrizzleORM />
-                  <span className="font-bold text-lg">Drizzle</span>
-                </div>
-              </Badge>
-              <Badge
-                variant="muted"
-                className="flex justify-start items-center gap-2 w-full my-2"
-              >
-                <div className="ml-1 flex items-center gap-2">
-                  <NestJS />
-                  <span className="font-bold text-lg">NestJS</span>
-                </div>
-              </Badge>
-              <Badge
-                variant="muted"
-                className="flex justify-start items-center gap-2 w-full my-2"
-              >
-                <div className="ml-1 flex items-center gap-2">
-                  <GodotEngine />
-                  <span className="font-bold text-lg">Godot</span>
-                </div>
-              </Badge>
-              <Badge
-                variant="muted"
-                className="flex justify-start items-center gap-2 w-full my-2"
-              >
-                <div className="ml-1 flex items-center gap-2">
-                  <TypeScript />
-                  <span className="font-bold text-xs">Type Script</span>
-                </div>
-              </Badge>
-              <Badge
-                variant="muted"
-                className="flex justify-start items-center gap-2 w-full my-2"
-              >
-                <div className="ml-1 flex items-center gap-2">
-                  <Python />
-                  <span className="font-bold text-lg">Python</span>
-                </div>
-              </Badge>
-              <Badge
-                variant="muted"
-                className="flex justify-start items-center gap-2 w-full my-2"
-              >
-                <div className="ml-1 flex items-center gap-2">
-                  <Rust />
-                  <span className="font-bold text-lg">Rust</span>
-                </div>
-              </Badge>
-              <Badge
-                variant="muted"
-                className="flex justify-start items-center gap-2 w-full my-2"
-              >
-                <div className="ml-1 flex items-center gap-2">
-                  <PostgreSQL />
-                  <span className="font-bold text-base">Potgres</span>
-                </div>
-              </Badge>
-              <Badge
-                variant="muted"
-                className="flex justify-start items-center gap-2 w-full my-2"
-              >
-                <div className="ml-1 flex items-center gap-2">
-                  <Linux />
-                  <span className="font-bold text-base">Linux</span>
-                </div>
-              </Badge>
+            <h2 className="flex items-center gap-2 text-xl font-semibold text-foreground">
+              <GraduationCap size={20} />
+              Skills
+            </h2>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
+              {skills.map((skill) => (
+                <motion.div
+                  key={skill.label}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <Badge
+                    variant="muted"
+                    className="flex items-center gap-2 w-full p-2 transition-all rounded-lg cursor-pointer"
+                  >
+                    <skill.icon />
+                    <span className="font-bold">{skill.label}</span>
+                  </Badge>
+                </motion.div>
+              ))}
             </div>
+
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="mt-auto relative rounded-lg shadow-sm group cursor-pointer h-full overflow-hidden"
+              onClick={() => navigate({ to: "/music" })}
+            >
+              {/* Blurry background */}
+              <div
+                className="absolute inset-0 bg-cover bg-center transition-[filter] duration-500 filter"
+                style={{
+                  backgroundImage: "url('/images/music-background.jpg')",
+                }}
+              />
+
+              {/* Optional overlay */}
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
+
+              {/* Unblurred text */}
+              <div className="absolute inset-0 flex items-center justify-center z-10">
+                <TextRewind text="My Hobbies" />
+              </div>
+            </motion.div>
           </motion.div>
           <motion.div
             whileHover={{ scale: 1.02 }}
